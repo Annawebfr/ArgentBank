@@ -35,9 +35,11 @@ const SignInContent = () => {
       const data = await response.json();
       const token = data.body.token;
 
-      dispatch(setToken(token));
+     //dispatch(setToken(token));
 
-      dispatch(fetchUserProfile());
+      //dispatch(fetchUserProfile());
+
+      //stocker le token dans le localstorage  (APi)
 
       navigate('/user');
     } catch (err) {
