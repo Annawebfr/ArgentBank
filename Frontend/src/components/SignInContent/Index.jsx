@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setToken, fetchUserProfile } from '../../Auth/authSlice';
+//import { useDispatch } from 'react-redux';
+//import { setToken, fetchUserProfile } from '../../Auth/authSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from 'react-router-dom'; 
@@ -10,12 +10,20 @@ const SignInContent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
+
+
+
+
+
+
+
+    
     try {
       const response = await fetch('http://localhost:3001/api/v1/user/login', {
         method: 'POST',
@@ -41,11 +49,19 @@ const SignInContent = () => {
 
       //stocker le token dans le localstorage  (APi)
 
+  // Stocker le token dans le localStorage
+  localStorage.setItem('token', token);
+  console.log(localStorage.getItem('token'));
+
+
       navigate('/user');
     } catch (err) {
       setError('Invalid email or password');
     }
   };
+
+
+
 
   return (
     <div className='main bg-dark'>
